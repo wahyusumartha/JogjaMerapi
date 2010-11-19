@@ -4,6 +4,7 @@ import com.github.jogjamerapi.AppSetting;
 import com.github.jogjamerapi.ServiceClient;
 import com.github.jogjamerapi.network.HttpConnectionFactory;
 import net.rim.device.api.ui.UiApplication;
+import net.rim.device.api.ui.component.Dialog;
 
 public class JogjaMerapi extends UiApplication implements ActionListener {
 
@@ -13,12 +14,19 @@ public class JogjaMerapi extends UiApplication implements ActionListener {
 	private ServiceClient serviceClient;
 
 	private HomeScreen homeScreen;
+	private JalinMerapiStreamScreen jalinMerapiStreamScreen;
 
 	public JogjaMerapi() {
 		init();
 		if (serviceClient != null) {
 			homeScreen = new HomeScreen(serviceClient);
+			homeScreen.addActionListener(this);
 			pushScreen(homeScreen);
+			// jalinMerapiStreamScreen = new
+			// JalinMerapiStreamScreen(serviceClient);
+			// pushScreen(jalinMerapiStreamScreen);
+			//			
+			// jalinMerapiStreamScreen.loadList();
 		}
 	}
 
@@ -34,7 +42,19 @@ public class JogjaMerapi extends UiApplication implements ActionListener {
 	}
 
 	public void onAction(Action event) {
-		// TODO Auto-generated method stub
+		if (event.getSource() == homeScreen) {
+			if (event.getAction().equals(JalinMerapiStreamScreen.ACTION_ENTER)) {
+				if (jalinMerapiStreamScreen == null) {
+					jalinMerapiStreamScreen = new JalinMerapiStreamScreen(
+							serviceClient);
+					jalinMerapiStreamScreen.addActionListener(this);
+				}
+				jalinMerapiStreamScreen.loadList();
+				pushScreen(jalinMerapiStreamScreen);
+			
+				
+			}
 
+		}
 	}
 }
