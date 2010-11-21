@@ -87,7 +87,13 @@ public class HomeScreen extends JogjaMerapiScreen {
 			helpButton = new ImageButton(imageUtil.resizeBitmap(Bitmap
 					.getBitmapResource("file-help-icon.png"), 35, 35),
 					imageUtil.resizeBitmap(Bitmap
-							.getBitmapResource("help-icon.png"), 35, 35));
+							.getBitmapResource("help-icon.png"), 35, 35)){
+
+								protected void doAction() {
+									Dialog.alert("Help");
+								}
+				
+			};
 			transparanMenu.addButton(twitterButton);
 			transparanMenu.addButton(mapsButton);
 			transparanMenu.addButton(helpButton);
