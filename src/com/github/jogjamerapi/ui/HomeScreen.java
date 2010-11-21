@@ -76,7 +76,13 @@ public class HomeScreen extends JogjaMerapiScreen {
 							.resizeBitmap(
 									Bitmap
 											.getBitmapResource("NeedleLeftYellow2.png"),
-									35, 35));
+									35, 35)){
+
+										protected void doAction() {
+											Dialog.alert("Maunya sih maps");
+										}
+				
+			};
 
 			helpButton = new ImageButton(imageUtil.resizeBitmap(Bitmap
 					.getBitmapResource("file-help-icon.png"), 35, 35),
