@@ -104,8 +104,10 @@ public class TwitterListField extends ListField implements ListFieldCallback {
 			twitterText.setText(jalinMerapi.getText());
 			rowManager.add(twitterText);
 
-			userInfo.setText("From : " + jalinMerapi.fromUser());
+			userInfo.setText("From : " + jalinMerapi.fromUser() + " : " + rowManager.getExtent().height);
 			rowManager.add(userInfo);
+			
+			//listField.setRowHeight(rowManager.getExtent().height);
 			
 			rowManager.drawRow(graphics, 0, y + 1, width,listField.getRowHeight());
 			
@@ -189,6 +191,8 @@ public class TwitterListField extends ListField implements ListFieldCallback {
 
 			// Restore the graphics context
 			graphics.popContext();
+			
+		
 		}
 
 		/*

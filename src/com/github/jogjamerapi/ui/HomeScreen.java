@@ -18,7 +18,7 @@ import net.rim.device.api.ui.component.ButtonField;
 import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.container.MainScreen;
 
-public class HomeScreen extends JogjaMerapiScreen  {
+public class HomeScreen extends JogjaMerapiScreen {
 
 	private static final String BANNER_TITLE = "Jogja Jalin Merapi";
 
@@ -40,8 +40,7 @@ public class HomeScreen extends JogjaMerapiScreen  {
 	public HomeScreen(ServiceClient serviceClient) {
 		super(serviceClient);
 		transparanMenu = new TransparanMenu();
-	
-		
+
 		backgroundManager = new BackgroundManager();
 		banner = new HeaderField(BANNER_TITLE);
 
@@ -51,8 +50,6 @@ public class HomeScreen extends JogjaMerapiScreen  {
 				| BitmapField.FIELD_VCENTER);
 		image.setMargin(5, 0, 5, 0);
 
-		
-
 		setBanner(banner);
 		backgroundManager.add(image);
 		add(backgroundManager);
@@ -61,30 +58,30 @@ public class HomeScreen extends JogjaMerapiScreen  {
 	protected boolean keyDown(int keycode, int time) {
 
 		if (keycode == 268566528) {
-			 twitterButton = new ImageButton(imageUtil.resizeBitmap(
-						Bitmap.getBitmapResource("tweet-grey.png"), 35, 35),
-						imageUtil.resizeBitmap(Bitmap
-								.getBitmapResource("tweet-blue.png"), 35, 35)){
+			twitterButton = new ImageButton(imageUtil.resizeBitmap(Bitmap
+					.getBitmapResource("tweet-grey.png"), 35, 35), imageUtil
+					.resizeBitmap(Bitmap.getBitmapResource("tweet-blue.png"),
+							35, 35)) {
 
-									protected void doAction() {
-										fireAction(JalinMerapiStreamScreen.ACTION_ENTER);
-									}
-					
-				};
+				protected void doAction() {
+					fireAction(JalinMerapiStreamScreen.ACTION_ENTER);
+				}
 
-				mapsButton = new ImageButton(
-						imageUtil.resizeBitmap(Bitmap
-								.getBitmapResource("NeedleWhite.png"), 35, 35),
-						imageUtil
-								.resizeBitmap(
-										Bitmap
-												.getBitmapResource("NeedleLeftYellow2.png"),
-										35, 35));
+			};
 
-				 helpButton = new ImageButton(imageUtil.resizeBitmap(
-						Bitmap.getBitmapResource("file-help-icon.png"), 35, 35),
-						imageUtil.resizeBitmap(Bitmap
-								.getBitmapResource("help-icon.png"), 35, 35));
+			mapsButton = new ImageButton(
+					imageUtil.resizeBitmap(Bitmap
+							.getBitmapResource("NeedleWhite.png"), 35, 35),
+					imageUtil
+							.resizeBitmap(
+									Bitmap
+											.getBitmapResource("NeedleLeftYellow2.png"),
+									35, 35));
+
+			helpButton = new ImageButton(imageUtil.resizeBitmap(Bitmap
+					.getBitmapResource("file-help-icon.png"), 35, 35),
+					imageUtil.resizeBitmap(Bitmap
+							.getBitmapResource("help-icon.png"), 35, 35));
 			transparanMenu.addButton(twitterButton);
 			transparanMenu.addButton(mapsButton);
 			transparanMenu.addButton(helpButton);
@@ -98,7 +95,5 @@ public class HomeScreen extends JogjaMerapiScreen  {
 	public TransparanMenu getTransparanMenu() {
 		return transparanMenu;
 	}
-
-	
 
 }

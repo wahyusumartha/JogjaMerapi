@@ -49,10 +49,8 @@ public class JogjaMerapi extends UiApplication implements ActionListener {
 							serviceClient);
 					jalinMerapiStreamScreen.addActionListener(this);
 				}
-				jalinMerapiStreamScreen.loadList();
 				pushScreen(jalinMerapiStreamScreen);
-			
-				
+				jalinMerapiStreamScreen.loadList();
 			}
 
 		}

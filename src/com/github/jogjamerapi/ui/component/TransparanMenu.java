@@ -14,7 +14,7 @@ import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.container.HorizontalFieldManager;
 import net.rim.device.api.ui.container.PopupScreen;
 
-public class TransparanMenu extends PopupScreen  {
+public class TransparanMenu extends PopupScreen {
 
 	private static final int HEIGHT = 40;
 	private static final int POS_X = 0;
@@ -24,10 +24,6 @@ public class TransparanMenu extends PopupScreen  {
 	private HorizontalFieldManager imageManager;
 
 	private ImageUtil imageUtil = new ImageUtil();
-	
-	private ImageButton twitterButton;
-	private ImageButton mapsButton;
-	private ImageButton helpButton;
 
 	public TransparanMenu() {
 		super(new HorizontalFieldManager(NO_HORIZONTAL_SCROLL) {
@@ -45,23 +41,6 @@ public class TransparanMenu extends PopupScreen  {
 				setExtent(getPreferredWidth(), getPreferredHeight());
 			}
 		});
-		
-		
-		twitterButton = new ImageButton(imageUtil.resizeBitmap(Bitmap
-				.getBitmapResource("tweet-grey.png"), 35, 35), imageUtil
-				.resizeBitmap(Bitmap.getBitmapResource("tweet-blue.png"), 35,
-						35)) ;
-		
-		mapsButton = new ImageButton(imageUtil.resizeBitmap(Bitmap
-				.getBitmapResource("NeedleWhite.png"), 35, 35), imageUtil
-				.resizeBitmap(
-						Bitmap.getBitmapResource("NeedleLeftYellow2.png"), 35,
-						35));
-		
-		helpButton = new ImageButton(imageUtil.resizeBitmap(Bitmap
-				.getBitmapResource("file-help-icon.png"), 35, 35),
-				imageUtil.resizeBitmap(Bitmap
-						.getBitmapResource("help-icon.png"), 35, 35)) ;
 
 		/*
 		 * Take Snapshot from Screen Above
@@ -112,9 +91,9 @@ public class TransparanMenu extends PopupScreen  {
 			}
 
 		};
-//		imageManager.add(twitterButton);
-//		imageManager.add(mapsButton);
-//		imageManager.add(helpButton);
+		// imageManager.add(twitterButton);
+		// imageManager.add(mapsButton);
+		// imageManager.add(helpButton);
 		add(imageManager);
 
 	}
@@ -145,23 +124,8 @@ public class TransparanMenu extends PopupScreen  {
 	protected void applyTheme() {
 	}
 
-	public ImageButton getTwitterButton() {
-		return twitterButton;
-	}
-
-	public ImageButton getMapsButton() {
-		return mapsButton;
-	}
-
-	public ImageButton getHelpButton() {
-		return helpButton;
-	}
-	
-	public void addButton(Field field){
+	public void addButton(Field field) {
 		imageManager.add(field);
 	}
-
-	
-
 
 }
