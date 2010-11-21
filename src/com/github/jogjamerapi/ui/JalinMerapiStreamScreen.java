@@ -43,14 +43,17 @@ public class JalinMerapiStreamScreen extends JogjaMerapiScreen {
 
 	public void loadList() {
 		updateList();
-
 	}
 
+	/*
+	 * Scheduling Update List From JalinMerapi Stream in Twitter
+	 */
 	private final void updateList() {
 
 		BackgroundStream backgroundStream = new BackgroundStream(this);
 		LoadingPopupScreen.showLoadingScreen(backgroundStream, "Loading...");
 
+		// Update every 10 seconds
 		streamTimer = new Timer();
 		streamTimer.schedule(new TimerTask() {
 			public void run() {
@@ -59,6 +62,9 @@ public class JalinMerapiStreamScreen extends JogjaMerapiScreen {
 		}, 10000);
 	}
 
+	/*
+	 * Stop Scheduler Update when Escape this Screen
+	 */
 	protected boolean keyChar(char c, int status, int time) {
 		if (c == Characters.ESCAPE) {
 			streamTimer.cancel();
@@ -68,6 +74,9 @@ public class JalinMerapiStreamScreen extends JogjaMerapiScreen {
 		return false;
 	}
 
+	/*
+	 * Stop Scheduler Update when close this Screen
+	 */
 	public void close() {
 		streamTimer.cancel();
 		UiApplication.getUiApplication().popScreen(this);
@@ -82,13 +91,6 @@ public class JalinMerapiStreamScreen extends JogjaMerapiScreen {
 		}
 
 		public void run() {
-			// UiApplication.getUiApplication().invokeLater(new Runnable() {
-			// public void run() {
-			// while (twitterListField.getSize() > 0) {
-			// twitterListField.delete(0);
-			// }
-			// }
-			// });
 
 			try {
 				serviceClient.setParameter("jalinmerapi");
@@ -104,9 +106,11 @@ public class JalinMerapiStreamScreen extends JogjaMerapiScreen {
 				UiApplication.getUiApplication().invokeLater(new Runnable() {
 
 					public void run() {
+						//delete unnecessary items from listfield
 						while (twitterListField.getSize() > 0) {
 							twitterListField.delete(0);
 						}
+						
 						if (jalinMerapis.length > 0) {
 							twitterListField.clear();
 
